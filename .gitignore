@@ -22,3 +22,6 @@
 
 #Ignore all runtime css file
 /public/assets/*
+
+#Ignore for cf
+/launchConfigurations
