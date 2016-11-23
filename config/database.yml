@@ -20,6 +20,16 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+#production:
+  #<<: *default
+  #database: db/production.sqlite3
 production:
+<% if ENV['VCAP_SERVICES'] %>
+<% services = JSON.parse(ENV['VCAP_SERVICES'])
+   postgres = services["elephantsql"]
+   credentials = postgres.first["credentials"] %>
+  url: <%= credentials["uri"] %>
+<% else %>
   <<: *default
   database: db/production.sqlite3
+<% end %>
