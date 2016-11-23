@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-4"> 
+	  <div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">User Information</h3>
+		</div>
+		<div class="panel-body">
+			<form class="form-horizontal">	  
+			  <div class="form-group">
+				<%= render "common/form_control_static_item", :label => "Email", :text => @user.email %>
+				<%= render "common/form_control_static_item", :label => "First Name", :text => @user.first_name %>
+				<%= render "common/form_control_static_item", :label => "Last Name", :text => @user.last_name %>
+			  </div>
+			  <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-primary btn-block" %>
+			</form>
+		</div>
+	</div>
+    </div>
+  </div>
+</div>
