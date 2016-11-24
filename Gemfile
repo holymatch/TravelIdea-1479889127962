@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
-
-ruby '2.3.0'
+group :production do
+  ruby '2.3.0'
+end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
@@ -52,6 +53,8 @@ gem 'autoprefixer-rails'
 #gem 'jquery-datatables-rails', '~> 3.4.0'
 
 # Database for BluxMix
-gem 'pg'
-gem "cf-autoconfig", "~> 0.2.1"
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'pg'
+  gem "cf-autoconfig", "~> 0.2.1"
+  gem 'rails_12factor', group: :production
+end

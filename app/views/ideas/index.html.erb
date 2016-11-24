@@ -3,9 +3,33 @@
 <%= render 'error_message', idea: @idea %>
 
 
-<%= render 'form', idea: @idea, form_action: "create", form_method: "post", collapse: true %>
+<%= render 'collapse_form', idea: @idea, form_action: "create", form_method: "post", collapse: true %>
+
+
+			
+
 
 <div class="row">
+	<% @ideas.each do |idea| %>
+	  <tr>
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><%= idea.title %></h3>
+					<%= link_to 'Show', idea %>
+					<%= link_to 'Edit', edit_idea_path(idea) %>
+					<%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %>
+				</div>
+			<div class="panel-body">
+				<%= render "common/form_control_static_item", :label => "Owner", :text => fullusername(idea.user) %>
+				<%= render "common/form_control_static_item", :label => "Destination", :text => idea.destination %>
+				<%= render "common/form_control_static_item", :label => "Start Date", :text => idea.start_date %>
+				<%= render "common/form_control_static_item", :label => "End Date", :text => idea.end_date %>
+				<span><%= idea.tags %></span>
+			</div>
+		</div>
+	</div>
+	<% end %>
 	<div class="col-md-4">
 		<div class="panel panel-default">
 			<div class="panel-heading">

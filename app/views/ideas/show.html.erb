@@ -1,4 +1,28 @@
+<script>
+
+$(function(){
+	$("#new_comment").submit(function(e) {
+		e.preventDefault();
+		$.ajax({
+			type: $(this).attr('method'),
+			url: $(this).attr('action'),
+			data: $(this).serialize(),
+			dataType: "json",
+			success:function(data)
+			{
+				console.log(data);// show response from the php script.
+				$("#submit_cmment").button("reset");
+			}
+		});
+		$("#submit_cmment").button("loading");
+	});
+});
+</script>
+
+
 <p id="notice"><%= notice %></p>
+
+<!-- 
 
 <p>
   <strong>Title:</strong>
@@ -32,3 +56,34 @@
 
 <%= link_to 'Edit', edit_idea_path(@idea) %> |
 <%= link_to 'Back', ideas_path %>
+-->
+
+<div class="row">
+	<div class="col-md-11">
+		<div class="row">
+			<div class="col-md-5 col-md-offset-4">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div>
+							<strong><%= @idea.title %></strong>
+						</div>
+						<div>
+							<span class="glyphicon glyphicon-calendar text-primary"> </span> <span class="text-muted"><%= @idea.start_date %> to <%= @idea.end_date %></span>
+						</div>
+						<dl>
+							<dt>Destination</dt>
+							<dd>
+							<img class="staticmap" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @idea.destination %>&size=380x300&scale=2&language=en&key=AIzaSyBkui4rEH4tZbKWeTTacd9E1PyPxw9FXfM" alt="<%= @idea.destination %>"></img>
+							<%= @idea.destination %>
+							</dd>
+						</dl>
+					</div>
+					<div class="panel-footer">
+						<%= render 'comments', comments: @idea.comments %>
+						<%= render 'new_comment', comment: @comment %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

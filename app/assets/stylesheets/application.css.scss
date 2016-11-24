@@ -29,3 +29,8 @@ body {
   @extend .alert;
   @extend .alert-danger;
 }
+
+.staticmap {
+	width: 380px;
+	height: 300px;
+}

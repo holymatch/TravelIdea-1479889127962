@@ -11,6 +11,7 @@ class IdeasController < ApplicationController
   # GET /ideas/1
   # GET /ideas/1.json
   def show
+    @comment = Comment.new
   end
 
   # GET /ideas/new
@@ -26,7 +27,7 @@ class IdeasController < ApplicationController
   # POST /ideas.json
   def create
     @idea = Idea.new(idea_params)
-
+    @idea.user = User.find(session[:user_id])
     respond_to do |format|
       if @idea.save
         format.html { redirect_to @idea, notice: 'Idea was successfully created.' }

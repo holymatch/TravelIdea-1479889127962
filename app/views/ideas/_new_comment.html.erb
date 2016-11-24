@@ -1,0 +1,14 @@
+<div class="row">
+	<%= form_for(comment) do |f| %>
+	<div class="col-md-12">
+		<label class="sr-only" for="comment_area">Comment</label>
+		<%= f.text_area :content, id: "comment_area", class: "form-control", placeholder: "Write some comment..." %>
+		
+		<%= f.hidden_field :user_id, value: session[:user_id] %>
+		<%= f.hidden_field :idea_id, value: @idea.id %>
+		<div class=" pull-right">
+			<%= f.submit "Post", id: "submit_cmment", class: "btn btn-primary btn-xs", "data-loading-text": "Posting" %>
+		</div>
+	</div>
+	<% end %>
+</div>
