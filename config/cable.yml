@@ -6,4 +6,4 @@ test:
 
 production:
   adapter: redis
-  url: redis://travelidea.mybluemix.net:6379
+  url: redis://localhost:6379
