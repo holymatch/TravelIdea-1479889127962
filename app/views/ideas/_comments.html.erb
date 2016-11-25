@@ -1,8 +1,3 @@
 <% comments.each do |comment| %>
-<blockquote>
-	<p>
-		<%= comment.content %>
-		<footer><%= fullusername(comment.user) %></footer>
-	</p>
-</blockquote>
+	<%= render 'comment', comment: comment %>
 <% end %>

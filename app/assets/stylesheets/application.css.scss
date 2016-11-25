@@ -34,3 +34,12 @@ body {
 	width: 380px;
 	height: 300px;
 }
+
+blockquote.blockquote-sm {
+	padding: 0px 10px
+}
+
+blockquote.user_comment footer::before, blockquote.user_comment small::before, blockquote.user_comment .small::before {
+	font-family: "Glyphicons Halflings";
+	content: "\e008 ";
+}

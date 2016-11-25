@@ -30,6 +30,7 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
+        IdeaChannel.broadcast_to(@comment.idea, render_comment(@comment))
       else
         format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -70,5 +71,10 @@ class CommentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit(:content, :user_id, :idea_id)
+    end
+    
+    # Render the comment for boradcast to make sure the layout is same as view output
+    def render_comment(comment)
+      ApplicationController.renderer.render(partial: 'ideas/comment', locals: {comment: comment})
     end
 end

@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
 	  session[:user_last_name] = @user.last_name
 	  session[:logged_in] = true
 	  session[:return_to] = return_to
+    cookies.signed[:user_id] = @user.id
 	  redirect_back_or_default("/")
 	else
 	  flash[:error] = 'Invalid email/password combination' # Not quite right!
@@ -30,6 +31,7 @@ class SessionsController < ApplicationController
   
   # GET /logout
   def destroy
+  cookies.delete :user_id
 	reset_session
 	redirect_back_or_default("/")
   end

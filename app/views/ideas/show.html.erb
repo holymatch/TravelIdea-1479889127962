@@ -10,8 +10,8 @@ $(function(){
 			dataType: "json",
 			success:function(data)
 			{
-				console.log(data);// show response from the php script.
 				$("#submit_cmment").button("reset");
+				$("#comment_area").val("");
 			}
 		});
 		$("#submit_cmment").button("loading");
@@ -79,7 +79,9 @@ $(function(){
 						</dl>
 					</div>
 					<div class="panel-footer">
-						<%= render 'comments', comments: @idea.comments %>
+						<div id="comment_list">
+							<%= render 'comments', comments: @idea.comments %>
+						</div>
 						<%= render 'new_comment', comment: @comment %>
 					</div>
 				</div>

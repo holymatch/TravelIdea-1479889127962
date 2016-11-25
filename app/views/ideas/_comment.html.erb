@@ -1,0 +1,7 @@
+<% #Add comment cache to prevent render message every time in boardcast %>
+<% cache comment do %>
+	<blockquote class="blockquote-sm user_comment">
+		<%= comment.content %>
+		<footer class="pull-right"> <%= fullusername(comment.user) %></footer>
+	</blockquote>
+<% end %>
