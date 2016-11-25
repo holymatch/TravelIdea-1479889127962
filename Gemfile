@@ -55,3 +55,10 @@ gem 'autoprefixer-rails'
 
 # For datatable
 #gem 'jquery-datatables-rails', '~> 3.4.0'
+
+# Database for BluxMix
+group :production do
+  gem 'pg'
+  gem "cf-autoconfig", "~> 0.2.1"
+  gem 'rails_12factor', group: :production
+end
