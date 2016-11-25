@@ -25,3 +25,6 @@
 
 #Ignore for cf
 /launchConfigurations
+
+#Ignore the for windows only gemfile 
+Gemfile.lock
