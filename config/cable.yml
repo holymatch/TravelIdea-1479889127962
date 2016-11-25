@@ -6,4 +6,4 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://pub-redis-17233.dal-05.1.sl.garantiadata.com:17233
