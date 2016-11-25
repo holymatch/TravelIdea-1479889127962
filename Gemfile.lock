@@ -46,9 +46,6 @@ GEM
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     builder (3.2.2)
-    cf-autoconfig (0.2.1)
-      cf-runtime (= 0.2.0)
-    cf-runtime (0.2.0)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.2.x)
@@ -86,8 +83,6 @@ GEM
       mini_portile2 (~> 2.1.0)
     nokogiri (1.6.8.1-x86-mingw32)
       mini_portile2 (~> 2.1.0)
-    pg (0.19.0-x64-mingw32)
-    pg (0.19.0-x86-mingw32)
     puma (3.6.0)
     rack (2.0.1)
     rack-test (0.6.3)
@@ -109,11 +104,6 @@ GEM
       nokogiri (~> 1.6.0)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.5)
-    rails_stdout_logging (0.0.5)
     railties (5.0.0.1)
       actionpack (= 5.0.0.1)
       activesupport (= 5.0.0.1)
@@ -167,14 +157,11 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootstrap-sass (~> 3.2.0)
   byebug
-  cf-autoconfig (~> 0.2.1)
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
   jquery-rails
-  pg
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
-  rails_12factor
   sass-rails (~> 5.0)
   sqlite3
   therubyracer
