@@ -10,7 +10,6 @@ module ApplicationCable
       def find_verified_user
         if current_user = User.find_by(id: cookies.signed[:user_id])
           current_user
-          logger.debug("#{current_user} is connected.")
         else
           reject_unauthorized_connection
         end
