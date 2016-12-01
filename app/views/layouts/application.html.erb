@@ -4,52 +4,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>TravelIdea</title>
     <%= csrf_meta_tags %>
-
+	<!-- Keep all javascript in the head because useing turbolinks -->
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-	  <nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			  </button>
-			  <%= link_to "Travel Idea", ideas_path, class: "navbar-brand" %>
-			  <% if session[:logged_in] then %>
-				<p class="navbar-text navbar-right">Welcome <%= session[:user_first_name] %> <%= session[:user_last_name] %></p>
-			  <% end %>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<% if session[:logged_in] then %>
-					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown inverse-dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class='glyphicon glyphicon-user'></span> Users <span class="caret"></span></a>
-							<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
-							  <%= nav_to("Show User Information", controller: 'users', action: 'show', id: session[:user_id]) %>
-							  <%= nav_to("Edit User Information", controller: 'users', action: 'edit', id: session[:user_id]) %>
-							</ul>
-						</li>
-						<%= nav_to("<span class='glyphicon glyphicon-tags'></span> Ideas", controller: 'ideas', action: 'index') %>
-						<%= render "common/nav_search" %>
-						<li class="nav-item "><%= link_to "<span class='glyphicon glyphicon-log-out'></span> Logout".html_safe, logout_path, class: "nav-link" %></li>
-					</ul>
-				<% else %>
-					<ul class="nav navbar-nav navbar-right">
-					  <%= nav_to("<span class='glyphicon glyphicon-user'></span> Sign Up", controller: 'users', action: 'new') %>
-					  <%= nav_to("<span class='glyphicon glyphicon-log-in'></span> Login", controller: 'sessions', action: 'index') %>
-					</ul>
-				<% end %>
-			</div>
-		</div>
-	  </nav>
+	  <%= render "common/navbar.html.erb" %>
 	  <div class="container">
 		<%= yield %>
 	  </div>
-	  <!-- Move all javascript to bottom for optimization -->
-	  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
