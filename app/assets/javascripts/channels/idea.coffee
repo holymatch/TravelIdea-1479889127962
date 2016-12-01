@@ -18,5 +18,7 @@ $(document).on "turbolinks:load", ->
       
         received: (data) ->
           $('#comment_list').append data
+          if $(window).height() + $(document).scrollTop() > $(document).height() - 100
+            $("html, body").animate { scrollTop: $(".panel-footer").position().top + $(".panel-footer").height() }, 1000
           
   subscription_channel()
