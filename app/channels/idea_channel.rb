@@ -7,5 +7,6 @@ class IdeaChannel < ApplicationCable::Channel
 
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
+    logger.debug("Some on is unsubscribed!")
   end
 end
