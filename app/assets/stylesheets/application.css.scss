@@ -44,3 +44,19 @@ blockquote.user_comment footer::before, blockquote.user_comment small::before, b
 	font-family: "Glyphicons Halflings";
 	content: "\e008 ";
 }
+
+.glyphicon-unshare { 
+	&:before {
+		content: "\e095"; 
+		display: inline-block;
+		-webkit-transform: scale(-1, 1);
+		-moz-transform: scale(-1, 1);
+		-ms-transform: scale(-1, 1);
+		-o-transform: scale(-1, 1);
+		transform: scale(-1, 1);
+	} 
+}
+
+.panel-link:link, .panel-link:visited, .panel-link:hover, .panel-link:active {
+  color: inherit;
+}

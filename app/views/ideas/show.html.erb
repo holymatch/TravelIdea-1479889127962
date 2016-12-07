@@ -6,6 +6,11 @@
 			<div class="panel-body">
 				<div>
 					<strong><%= @idea.title %></strong>
+					<div class="btn-group pull-right">
+					<%= link_to '<span class="glyphicon glyphicon-unshare" aria-hidden="true"></span>'.html_safe, {controller: 'ideas', action: 'index'}, {class: "btn btn-default btn-xs", title: "Back"} %>
+					<%= link_to '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>'.html_safe, edit_idea_path(@idea), {class: "btn btn-default btn-xs", title: "Edit"} %>
+					<%= link_to '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>'.html_safe, @idea, method: :delete, data: { confirm: 'Are you want to delete this record?' }, class: "btn btn-default btn-xs", title: "Delete" %>		
+					</div>
 				</div>
 				<div>
 					<span class="glyphicon glyphicon-calendar text-primary"> </span> <span class="text-muted"><%= @idea.start_date %> to <%= @idea.end_date %></span>
@@ -13,7 +18,7 @@
 				<dl>
 					<dt>Destination</dt>
 					<dd>
-					<img class="staticmap" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @idea.destination %>&size=380x300&scale=2&language=en&key=AIzaSyBkui4rEH4tZbKWeTTacd9E1PyPxw9FXfM" alt="<%= @idea.destination %>"></img>
+					<img class="staticmap" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @idea.destination %>&size=380x300&scale=2&language=en&key=AIzaSyBkui4rEH4tZbKWeTTacd9E1PyPxw9FXfM" alt="<%= @idea.destination %>">
 					<%= @idea.destination %>
 					</dd>
 				</dl>
