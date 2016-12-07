@@ -16,8 +16,8 @@
 			<% if session[:logged_in] then %>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown inverse-dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class='glyphicon glyphicon-user'></span> Users <span class="caret"></span></a>
-						<ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Users <span class="caret"></span></a>
+						<ul class="dropdown-menu dropdown-menu-right" role="menu">
 						  <%= nav_to("Show User Information", controller: 'users', action: 'show', id: session[:user_id]) %>
 						  <%= nav_to("Edit User Information", controller: 'users', action: 'edit', id: session[:user_id]) %>
 						</ul>

@@ -1,8 +1,15 @@
-<form class="navbar-form navbar-left" role="search">
-<div class="input-group form-group">
-	<input type="text" class="form-control" placeholder="Search for idea" name="keyword">
-	<div class="input-group-btn">
-		<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+<li>
+	<form class="navbar-form navbar-left" role="search">
+	<div class="input-group form-group">
+		<% if current_page?(controller: 'ideas', action: 'index') %>
+			<div class="input-group-btn">
+				<a href="#add_idea" class="btn btn-default" data-toggle="modal" title="New Idea"><span class="glyphicon glyphicon-plus"></span></a>
+			</div>
+		<% end %>
+		<input type="text" class="form-control" placeholder="Search for idea" name="keyword">
+		<div class="input-group-btn">
+			<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search" title="Search"></span></button>
+		</div>
 	</div>
-</div>
-</form>
+	</form>
+</li>
