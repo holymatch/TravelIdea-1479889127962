@@ -22,9 +22,10 @@ class ApplicationController < ActionController::Base
     redirect_to(session.delete(:return_to) || default)
   end
   
-  #Return unauthorized error
+  #All http error will return as 404 error for security result
   def permission_denied
-    render :file => "public/401.html", :status => :unauthorized
+    #render :file => "public/401.html", :status => :unauthorized
+    page_not_found
   end
   
   #Return unauthorized error
