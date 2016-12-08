@@ -7,6 +7,9 @@ class IdeasController < ApplicationController
   def index
     @ideas = Idea.all
     @idea = Idea.new
+    if params[:keyword]
+      @ideas = Idea.search(params[:keyword])
+    end
   end
 
   # GET /ideas/1
@@ -17,7 +20,8 @@ class IdeasController < ApplicationController
 
   # GET /ideas/new
   def new
-    @idea = Idea.new
+    #@idea = Idea.new
+    page_not_found
   end
 
   # GET /ideas/1/edit
