@@ -14,11 +14,21 @@ class ApplicationController < ActionController::Base
   end
   	
   def logged_in
-    true if session["logged_in"] == true
+    true if session[:logged_in] == true
   end
   
   #Redirect to URL which user enter
   def redirect_back_or_default(default)
     redirect_to(session.delete(:return_to) || default)
+  end
+  
+  #Return unauthorized error
+  def permission_denied
+    render :file => "public/401.html", :status => :unauthorized
+  end
+  
+  #Return unauthorized error
+  def page_not_found
+    raise ActionController::RoutingError.new('Not Found')
   end
 end

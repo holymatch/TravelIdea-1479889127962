@@ -1,5 +1,6 @@
 class IdeasController < ApplicationController
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
+  before_action :owner, only: [:edit, :update, :destroy]
 
   # GET /ideas
   # GET /ideas.json
@@ -72,5 +73,10 @@ class IdeasController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def idea_params
       params.require(:idea).permit(:title, :destination, :start_date, :end_date, :tags, :user_id)
+    end
+    
+    # only owner can change the record
+    def owner
+      permission_denied unless session[:user_id] == @idea.user_id
     end
 end
