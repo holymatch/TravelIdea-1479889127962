@@ -9,7 +9,14 @@
 			<div class="panel panel-default">
 				<div class="panel-heading clearfix">
 					<%= link_to(idea,class: "panel-link") do %>
-					<h3 class="panel-title pull-left"><%= idea.title %></h3>
+					<div class="row">
+						<div class="col-md-10">
+							<h3 class="panel-title pull-left"><%= idea.title %></h3>
+						</div>
+						<div class="col-md-2">
+							<span class="badge pull-right"><%= idea.comments.count %></span>
+						</div>
+					</div>
 					<% end %>
 				</div>
 				<div class="panel-body">
