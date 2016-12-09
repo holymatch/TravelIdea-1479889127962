@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <%= render 'error_message', idea: @idea %>
-
+<div class="alert alert-info alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  Total of <%= @ideas.count %> ideas found.
+</div>
 <div class="row">
 	<%= render 'new_idea_dialog', idea: @idea, form_action: "create", form_method: "post", collapse: true %>
 	<% @ideas.each do |idea| %>
