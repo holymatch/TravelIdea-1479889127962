@@ -20,6 +20,7 @@
 						<ul class="dropdown-menu dropdown-menu-right" role="menu">
 						  <%= nav_to("Show User Information", controller: 'users', action: 'show', id: session[:user_id]) %>
 						  <%= nav_to("Edit User Information", controller: 'users', action: 'edit', id: session[:user_id]) %>
+						  <%= nav_to("Change Password", controller: 'users', action: 'password', id: session[:user_id]) %>
 						</ul>
 					</li>
 					<%= nav_to("<span class='glyphicon glyphicon-tags'></span> Ideas", controller: 'ideas', action: 'index') %>

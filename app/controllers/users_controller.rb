@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :owner, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :password, :change]
+  before_action :owner, only: [:show, :edit, :update, :destroy, :password, :change]
   # Skip login filter when user create new account
   skip_before_action :require_login, only: [:create, :new]
   
@@ -23,6 +23,24 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+  end
+  
+  # GET /users/1/password
+  def password
+  end
+  
+  # PATCH/PUT /users/1/password
+  # PATCH/PUT /users/1/password.json
+  def change
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :password }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # POST /users
@@ -73,7 +91,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name)
+      params.require(:user).permit(:email, :current_password, :change_password, :password, :password_confirmation, :first_name, :last_name)
     end
     
     # only owner can view or change the record
