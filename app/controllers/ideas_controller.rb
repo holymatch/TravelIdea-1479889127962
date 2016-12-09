@@ -5,10 +5,12 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
-    @ideas = Idea.all
     @idea = Idea.new
     if params[:keyword]
-      @ideas = Idea.search(params[:keyword])
+      # new ideas will show in the top of page
+      @ideas = Idea.search(params[:keyword]).order(created_at: :desc)
+    else 
+      @ideas = Idea.all.order(created_at: :desc)
     end
   end
 
