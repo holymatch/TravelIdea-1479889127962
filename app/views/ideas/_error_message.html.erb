@@ -1,6 +1,6 @@
 <% if idea.errors.any? %>
 <div id="error_explanation">
-  <h2><%= pluralize(idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
+  <h4><%= pluralize(idea.errors.count, "error") %> prohibited this idea from being saved:</h4>
 
   <ul>
   <% idea.errors.full_messages.each do |message| %>

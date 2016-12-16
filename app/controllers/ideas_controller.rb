@@ -18,6 +18,8 @@ class IdeasController < ApplicationController
   # GET /ideas/1.json
   def show
     @comment = Comment.new
+    # create a empty array if not hotel return
+    @hotels = []
     begin
       response = HTTParty.get("http://api.hotwire.com/v1/deal/hotel?dest=#{URI.encode(@idea.destination)}&currency=USD&apikey=cg54gruz8zva5n67p6jnqu8b&limit=5&sort=price&sortorder=desc&format=JSON", {format: :json})
       if response.code and response["Errors"].size == 0
@@ -48,7 +50,9 @@ class IdeasController < ApplicationController
     respond_to do |format|
       if @idea.save
         format.html { redirect_to @idea, notice: 'Idea was successfully created.' }
-        format.json { render :show, status: :created, location: @idea }
+        #format.json { render :show, status: :created, location: @idea }
+        # redirect to new idea page after create idea success
+        format.json { redirect_to @idea, notice: 'Idea was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @idea.errors, status: :unprocessable_entity }

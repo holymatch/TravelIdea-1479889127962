@@ -32,8 +32,8 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        #format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.html { render "show" }
+        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        #format.html { render "show" }
         #format.js { render "ideas/_comment", status: :created, location: @comment }
         format.json { render :show, status: :created, location: @comment }
         IdeaChannel.broadcast_to(@comment.idea, render_comment(@comment))

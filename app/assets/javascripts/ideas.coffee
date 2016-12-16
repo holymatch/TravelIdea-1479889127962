@@ -36,10 +36,35 @@ $(document).on "turbolinks:load", ->
     $("#remove_hidden").removeClass("hidden").click ->
       $("blockquote.user_comment.hidden").removeClass "hidden"
       $(@).addClass "hidden"
+      return
+	  
+  # handle error on ajax success
+  $("#new_idea,#new_comment").on("ajax:error", (e, xhr, status, error) ->
+    error_msg = xhr.responseJSON
+    model = $(@).data "model"
+    header = $("<h4></h4>").text("#{pluralize 'error', Object.keys(error_msg).length, true} prohibited this #{model} from being saved:") 
+    ul = $("<ul></ul>")
+    $("#error_explanation").empty().append(header).removeClass("hidden").append ul
+    # clear all old error
+    $(".field_with_errors").removeClass "field_with_errors"
+    Object.keys(error_msg).forEach (key) ->
+      li = $("<li></li>").text ("#{key.capitalizeFirstLetter()} #{error_msg[key][0]}")
+      $("##{model}_#{key}").parent().addClass "field_with_errors"
+      console.log "##{model}#{key}"
+      ul.append li 
+      return
+    return
+    ).on "ajax:success", (e, data, status, xhr) ->
+      # clear all error after success
+      $("#error_explanation").empty().addClass "hidden"
+      $(".field_with_errors").removeClass "field_with_errors"
+      return
   
   # reset the comment area after submit new comment success
   $("#new_comment").on "ajax:success", (e, data, status, xhr) ->
-    $("#comment_area").val ""
+    $("#comment_content").val ""
     $("#new_article").append data
+    return  
+  return
     
   

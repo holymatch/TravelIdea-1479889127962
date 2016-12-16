@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
-
+<div id="error_explanation" class="hidden">
+</div>
 <div class="row">
 	<div class="col-md-6 col-md-offset-2">
 		<div class="panel panel-default">
@@ -35,8 +36,6 @@
 		</div>
 	</div>
 	<div class="col-md-4">
-		<div id="api-container" data-api-url="<%= "http://api.hotwire.com/v1/deal/hotel?dest=#{URI.encode(@idea.destination)}&currency=USD&apikey=cg54gruz8zva5n67p6jnqu8b&limit=5&sort=price&sortorder=desc&format=JSONP" %>">
-		</div>
 		<div class="panel panel-default">
 			<div class="panel-heading">Suggested hotel</div>
 			<ul class="list-group">

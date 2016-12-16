@@ -1,8 +1,8 @@
 <div class="row">
-	<%= form_for(comment, remote: true) do |f| %>
+	<%= form_for(comment, remote: true, format: 'json', html: {'data-model': 'comment'}) do |f| %>
 	<div class="col-md-12">
-		<label class="sr-only" for="comment_area">Comment</label>
-		<%= f.text_area :content, id: "comment_area", class: "form-control", placeholder: "Write some comment..." %>
+		<%= f.label :content, "Comment", class: "sr-only"  %>
+		<%= f.text_area :content, class: "form-control", placeholder: "Write some comment...", required: true %>
 		
 		<%= f.hidden_field :user_id, value: session[:user_id] %>
 		<%= f.hidden_field :idea_id, value: @idea.id %>

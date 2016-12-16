@@ -65,3 +65,6 @@ end
 
 # For WebAPI
 gem 'httparty'
+
+#For data validation
+gem 'date_validator'

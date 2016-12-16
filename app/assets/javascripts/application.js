@@ -16,3 +16,7 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
