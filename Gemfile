@@ -66,5 +66,11 @@ end
 # For WebAPI
 gem 'httparty'
 
-#For data validation
+# For data validation
 gem 'date_validator'
+
+# For add datepicker using jquery-ui
+gem 'jquery-ui-rails'
+
+# For taggle
+gem 'taggle', '~> 0.1.0'

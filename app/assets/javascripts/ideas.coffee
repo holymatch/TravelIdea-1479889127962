@@ -3,6 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on "turbolinks:load", ->  
+
+  dateFormat = 'yy-mm-dd'
+
   ###
   Web API of hotwire move to controller since the api key have not access control
   The HTML id and data-destination in Destination dd also remove from view
@@ -50,7 +53,6 @@ $(document).on "turbolinks:load", ->
     Object.keys(error_msg).forEach (key) ->
       li = $("<li></li>").text ("#{key.capitalizeFirstLetter()} #{error_msg[key][0]}")
       $("##{model}_#{key}").parent().addClass "field_with_errors"
-      console.log "##{model}#{key}"
       ul.append li 
       return
     return
@@ -64,7 +66,45 @@ $(document).on "turbolinks:load", ->
   $("#new_comment").on "ajax:success", (e, data, status, xhr) ->
     $("#comment_content").val ""
     $("#new_article").append data
-    return  
+    return
+  
+  getDate = (element) ->
+    try
+      date = $.datepicker.parseDate( dateFormat, $(element).val());
+    catch error
+      date = null
+    date  
+  
+  $("#idea_start_date").datepicker
+    dateFormat: dateFormat
+    minDate: new Date()
+  .change ->
+    $("#idea_end_date").datepicker "option", "minDate", getDate @
+    $("#idea_end_date").val($(@).val()) unless $("#idea_end_date").val() != ""
+    return
+  
+  $("#idea_end_date").datepicker
+    dateFormat: dateFormat
+    minDate: getDate $("#idea_start_date")
+  
+  update_tags = ->
+    $("#idea_tags").val(tags.getTagValues().join())
+  
+  if $("#tags").length > 0
+    tags = new Taggle 'tags',
+      duplicateTagClass: 'bounce'
+      #additionalTagClasses: 'bg-primary'
+      saveOnBlur: true
+      placeholder: "Tags"
+      preserveCase: true
+      tags: if $("#idea_tags").val() != "" then $("#idea_tags").val().split(',') else []
+      onTagAdd: (event, data) ->
+        update_tags()
+        return
+      onTagRemove: (event, data) ->
+        update_tags()
+        return
+  
   return
     
   

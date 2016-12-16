@@ -22,15 +22,16 @@
 							</div>
 							<div class="field form-group">
 							<%= f.label :start_date, "Start Date", class: "sr-only" %>
-							<%= f.date_select :start_date, {placeholder: "Start Date", class: "form-control", required: true} %>
+							<%= f.text_field :start_date, {placeholder: "Start Date", class: "form-control", required: true} %>
 							</div>
 							<div class="field form-group">
 							<%= f.label :end_date, "end_date", class: "sr-only" %>
-							<%= f.date_select :end_date, {placeholder: "End Date", class: "form-control", required: true} %>
+							<%= f.text_field :end_date, {placeholder: "End Date", class: "form-control", required: true} %>
 							</div>
 							<div class="field form-group">
 							<%= f.label :tags, "Tags", class: "sr-only" %>
-							<%= f.text_field :tags, {placeholder: "Tags", class: "form-control"} %>
+							<%= f.hidden_field :tags, {placeholder: "Tags", class: "form-control"} %>
+							<div id='tags' class='taggle textarea input custom bootstrap'></div>
 							</div>
 						</div>
 					</div>

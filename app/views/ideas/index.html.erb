@@ -26,7 +26,7 @@
 					<%= render "common/form_control_static_item", :label => "Destination", :text => idea.destination %>
 					<%= render "common/form_control_static_item", :label => "Start Date", :text => idea.start_date %>
 					<%= render "common/form_control_static_item", :label => "End Date", :text => idea.end_date %>
-					<span><%= idea.tags %></span>
+					<span><%= hash_tag_link(idea.tags) %></span>
 				</div>
 			</div>			
 		</div>

@@ -11,7 +11,10 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree ./common
- *= require datatables
+ *= require jquery-bootstrap-datepicker
+ *= require taggle/basics
+ *= require taggle/duplicate-tag-animations
+ *= require taggle/custom-tags
  *= require_self
  */
 @import "bootstrap-sprockets";
