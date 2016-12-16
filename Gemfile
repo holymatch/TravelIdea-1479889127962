@@ -62,3 +62,6 @@ group :production do
   gem "cf-autoconfig", "~> 0.2.1"
   gem 'rails_12factor', group: :production
 end
+
+# For WebAPI
+gem 'httparty'

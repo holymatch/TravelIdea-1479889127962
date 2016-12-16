@@ -18,7 +18,7 @@
 					<span class="glyphicon glyphicon-calendar text-primary"> </span> <span class="text-muted"><%= @idea.start_date %> to <%= @idea.end_date %></span>
 				</div>
 				<dl>
-					<dt id="destination" data-destination="<%= @idea.destination %>">Destination</dt>
+					<dt>Destination</dt>
 					<dd>
 					<img class="staticmap" src="https://maps.googleapis.com/maps/api/staticmap?center=<%= @idea.destination %>&size=380x300&scale=2&language=en&key=AIzaSyBkui4rEH4tZbKWeTTacd9E1PyPxw9FXfM" alt="<%= @idea.destination %>">
 					<%= @idea.destination %>
@@ -36,6 +36,20 @@
 	</div>
 	<div class="col-md-4">
 		<div id="api-container" data-api-url="<%= "http://api.hotwire.com/v1/deal/hotel?dest=#{URI.encode(@idea.destination)}&currency=USD&apikey=cg54gruz8zva5n67p6jnqu8b&limit=5&sort=price&sortorder=desc&format=JSONP" %>">
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">Suggested hotel</div>
+			<ul class="list-group">
+				<% @hotels.each do |hotel| %>
+					<li class="list-group-item">
+					<% hotel_headline = "#{hotel['City']} #{hotel['StarRating'].first 1} stars Hotel in #{hotel['Neighborhood']}, #{hotel['CurrencyCode']}#{hotel['Price']}/night" %>
+					<%= link_to(hotel['Url'], {target: '_blank'}) do
+						hotel_headline
+					end %>
+					<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=#{@idea.destination}&size=380x300&scale=2&language=en&key=AIzaSyBkui4rEH4tZbKWeTTacd9E1PyPxw9FXfM&&markers=#{hotel['NeighborhoodLatitude']},#{hotel['NeighborhoodLongitude']}", alt: hotel_headline, class: "staticmap" %>
+					</li>
+				<% end %>
+			</ul>
 		</div>
 	</div>
 </div>

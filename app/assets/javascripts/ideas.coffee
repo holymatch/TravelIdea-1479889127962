@@ -3,7 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on "turbolinks:load", ->  
-  
+  ###
+  Web API of hotwire move to controller since the api key have not access control
+  The HTML id and data-destination in Destination dd also remove from view
   if $("#api-container").data("api-url")?
     $.ajax
       method: "GET"
@@ -26,6 +28,7 @@ $(document).on "turbolinks:load", ->
         ul.append li
         ul.append map
       $("#api-container").append container
+  ###
   
   # only show the latest 5 comment
   if $("blockquote.user_comment").size() > 5

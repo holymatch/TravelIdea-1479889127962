@@ -18,6 +18,16 @@ class IdeasController < ApplicationController
   # GET /ideas/1.json
   def show
     @comment = Comment.new
+    begin
+      response = HTTParty.get("http://api.hotwire.com/v1/deal/hotel?dest=#{URI.encode(@idea.destination)}&currency=USD&apikey=cg54gruz8zva5n67p6jnqu8b&limit=5&sort=price&sortorder=desc&format=JSON", {format: :json})
+      if response.code and response["Errors"].size == 0
+        @hotels = response["Result"]
+      end
+    rescue HTTParty::Error => e
+      logger.debug("HTTParty Error: #{e}")
+    rescue StandardError => e
+      logger.debug("Fail to get hotel list: #{e}")
+    end
   end
 
   # GET /ideas/new
