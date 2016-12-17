@@ -1,5 +1,8 @@
-<div class="alert alert-danger">
-	<% flash.each do |key, value| %>
-	  <%= content_tag(:div, value, :class => "flash #{key}") %>
-	<% end %>
-</div>
+<% if !flash[:notice].nil? %>
+	<div id="notice" class="alert alert-success alert-dismissible" role="alert"><%= notice %></div>
+<% end %>
+
+
+<% if !flash[:error].nil? %>
+	<div id="notice" class="alert alert-danger" role="alert"><%= flash[:error] %></div>
+<% end %>

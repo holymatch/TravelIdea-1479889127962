@@ -1,4 +1,3 @@
-
 <%= render 'shared/flash_messages' if !flash.empty? %>
 
 <div class="row">
@@ -14,11 +13,11 @@
 				  
 						  <div class="field form-group">
 							<%= label_tag(:email, "E-Mail", class: "sr-only") %>
-							<%= text_field_tag :email, "", placeholder: "E-Mail", type: "email", class: "form-control", autofocus: true %>
+							<%= text_field_tag :email, "", placeholder: "E-Mail", type: "email", class: "form-control", autofocus: true, required: true %>
 						  </div>
 						  <div class="field form-group">
 							<%= label_tag(:password, "Password", class: "sr-only") %>
-							<%= password_field_tag :password, "", placeholder: "Password", class: "form-control" %>
+							<%= password_field_tag :password, "", placeholder: "Password", class: "form-control", required: true %>
 						  </div>
 						  <%= submit_tag("Login", class:"btn btn-primary btn-block") %>
 						<% end %>

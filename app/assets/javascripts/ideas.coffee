@@ -105,6 +105,24 @@ $(document).on "turbolinks:load", ->
         update_tags()
         return
   
+  # solution from http://stackoverflow.com/questions/14192009/how-can-i-display-delete-confirm-dialog-with-bootstraps-modal-not-like-brows
+  # to display bootstaps modal for delete idea rather than alert popup
+  
+  $.rails.allowAction = (link) ->
+    return true unless link.attr('data-confirm')
+    $.rails.showConfirmDialog(link)
+    false # always stops the action since code runs asynchronously
+
+  $.rails.confirmed = (link) ->
+    link.removeAttr('data-confirm')
+    link.trigger('click.rails')
+
+  $.rails.showConfirmDialog = (link) ->
+    message = link.attr 'data-confirm'
+    $("#delete_message").text message
+    $(remove_idea).modal 'show'
+    $('#remove_idea .confirm').on 'click', -> $.rails.confirmed(link)
+  
   return
     
   

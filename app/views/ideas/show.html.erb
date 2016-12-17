@@ -1,6 +1,7 @@
-<p id="notice"><%= notice %></p>
+<%= render 'shared/flash_messages' if !flash.empty? %>
 <div id="error_explanation" class="hidden">
 </div>
+<%= render 'remove_idea_dialog' %>
 <div class="row">
 	<div class="col-md-6 col-md-offset-2">
 		<div class="panel panel-default">
