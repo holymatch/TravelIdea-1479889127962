@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+	<!-- use viewport to prevent document resize for more like native mobile app -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>TravelIdea</title>
     <%= csrf_meta_tags %>
@@ -10,7 +11,9 @@
   </head>
 
   <body>
-	  <%= render "common/navbar.html.erb" %>
+	  <header>
+		<%= render "common/navbar.html.erb" %>
+	  </header>
 	  <div class="container">
 		<%= yield %>
 	  </div>
